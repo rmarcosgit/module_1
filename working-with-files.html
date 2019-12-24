@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introduction to spatial statistics with R</title>
+  <meta name="description" content="Introduction to spatial statistics with R">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introduction to spatial statistics with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to spatial statistics with R" />
+  
+  
+  
+
+<meta name="author" content="Marcos Rodrigues">
+
+
+<meta name="date" content="2017-10-27">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="intro.html">
+<link rel="next" href="basic-instructions.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/datatables-binding-0.2/datatables.js"></script>
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MODULE 1: Introduction to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prologue</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> A brief introduction to R</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#getting-and-installing-r"><i class="fa fa-check"></i><b>1.1.1</b> Getting and installing R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#documentation-manuals-and-help"><i class="fa fa-check"></i><b>1.1.2</b> Documentation, manuals and help</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#starting-with-r"><i class="fa fa-check"></i><b>1.2</b> Starting with R</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#the-r-environment"><i class="fa fa-check"></i><b>1.2.1</b> The R environment</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#working-with-r"><i class="fa fa-check"></i><b>1.3</b> Working with R</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#objects-in-r"><i class="fa fa-check"></i><b>1.4</b> Objects in R</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#creating-objects"><i class="fa fa-check"></i><b>1.4.1</b> Creating objects</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#vectors"><i class="fa fa-check"></i><b>1.4.2</b> Vectors</a></li>
+<li class="chapter" data-level="1.4.3" data-path="intro.html"><a href="intro.html#lists"><i class="fa fa-check"></i><b>1.4.3</b> Lists</a></li>
+<li class="chapter" data-level="1.4.4" data-path="intro.html"><a href="intro.html#arrays"><i class="fa fa-check"></i><b>1.4.4</b> Arrays</a></li>
+<li class="chapter" data-level="1.4.5" data-path="intro.html"><a href="intro.html#data.frame"><i class="fa fa-check"></i><b>1.4.5</b> Data.frame</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#object-management"><i class="fa fa-check"></i><b>1.5</b> Object management</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#functions-and-arguments"><i class="fa fa-check"></i><b>1.6</b> Functions and arguments</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#scripts-in-r"><i class="fa fa-check"></i><b>1.7</b> Scripts in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="working-with-files.html"><a href="working-with-files.html"><i class="fa fa-check"></i><b>2</b> Working with files</a><ul>
+<li class="chapter" data-level="2.1" data-path="working-with-files.html"><a href="working-with-files.html#the-working-directory"><i class="fa fa-check"></i><b>2.1</b> The working directory</a></li>
+<li class="chapter" data-level="2.2" data-path="working-with-files.html"><a href="working-with-files.html#reading-data-files"><i class="fa fa-check"></i><b>2.2</b> Reading data files</a></li>
+<li class="chapter" data-level="2.3" data-path="working-with-files.html"><a href="working-with-files.html#writing-text-files"><i class="fa fa-check"></i><b>2.3</b> Writing text files</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-files.html"><a href="working-with-files.html#data-manipulation"><i class="fa fa-check"></i><b>2.4</b> Data manipulation</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="working-with-files.html"><a href="working-with-files.html#working-with-columns"><i class="fa fa-check"></i><b>2.4.1</b> Working with columns</a></li>
+<li class="chapter" data-level="2.4.2" data-path="working-with-files.html"><a href="working-with-files.html#working-with-rows"><i class="fa fa-check"></i><b>2.4.2</b> Working with rows</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-instructions.html"><a href="basic-instructions.html"><i class="fa fa-check"></i><b>3</b> Basic instructions</a><ul>
+<li class="chapter" data-level="3.1" data-path="basic-instructions.html"><a href="basic-instructions.html#descriptive-statistics-and-summaries"><i class="fa fa-check"></i><b>3.1</b> Descriptive statistics and summaries</a></li>
+<li class="chapter" data-level="3.2" data-path="basic-instructions.html"><a href="basic-instructions.html#the-apply-function"><i class="fa fa-check"></i><b>3.2</b> The <em>apply()</em> function</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-instructions.html"><a href="basic-instructions.html#installing-packages"><i class="fa fa-check"></i><b>3.3</b> Installing packages</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="basic-instructions.html"><a href="basic-instructions.html#installing-an-external-package"><i class="fa fa-check"></i><b>3.3.1</b> Installing an external package</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="basic-instructions.html"><a href="basic-instructions.html#create-a-function"><i class="fa fa-check"></i><b>3.4</b> Create a function</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="plotting-with-r.html"><a href="plotting-with-r.html"><i class="fa fa-check"></i><b>4</b> Plotting with R</a><ul>
+<li class="chapter" data-level="4.1" data-path="plotting-with-r.html"><a href="plotting-with-r.html#basic-plots"><i class="fa fa-check"></i><b>4.1</b> Basic plots</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="plotting-with-r.html"><a href="plotting-with-r.html#dot-or-point-plots"><i class="fa fa-check"></i><b>4.1.1</b> Dot or point plots</a></li>
+<li class="chapter" data-level="4.1.2" data-path="plotting-with-r.html"><a href="plotting-with-r.html#line-plots"><i class="fa fa-check"></i><b>4.1.2</b> Line plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="plotting-with-r.html"><a href="plotting-with-r.html#histograms"><i class="fa fa-check"></i><b>4.2</b> Histograms</a></li>
+<li class="chapter" data-level="4.3" data-path="plotting-with-r.html"><a href="plotting-with-r.html#scatterplots"><i class="fa fa-check"></i><b>4.3</b> Scatterplots</a></li>
+<li class="chapter" data-level="4.4" data-path="plotting-with-r.html"><a href="plotting-with-r.html#multiple-plots"><i class="fa fa-check"></i><b>4.4</b> Multiple plots</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="plotting-with-r.html"><a href="plotting-with-r.html#create-a-combined-plot"><i class="fa fa-check"></i><b>4.4.1</b> Create a combined plot</a></li>
+<li class="chapter" data-level="4.4.2" data-path="plotting-with-r.html"><a href="plotting-with-r.html#export-an-image-file"><i class="fa fa-check"></i><b>4.4.2</b> Export an image file</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i>Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to spatial statistics with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="working-with-files" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Working with files</h1>
+<p>So far we have seen how to enter data and create objects manually, but it is also possible, and in fact is most common, to read data from files and store it in an object. If the target data file is properly structured, we will create a <code>matrix</code> or a ‘data.frame’ object which we can manipulated afterwards.</p>
+<div id="the-working-directory" class="section level2">
+<h2><span class="header-section-number">2.1</span> The working directory</h2>
+<p>Using data files normally requires us to specify the location of that file using <code>paths</code>. To avoid this, R has a tool that allow us to specify a target folder -the so-called <strong>working directory or folder</strong>- to work with.</p>
+<p>The working directory is the default path for reading and writing files of any kind. We can know the path to the current working directory using the <code>getwd()</code> command. To set a new working directory, we use the command <code>setwd(&quot;path&quot;)</code>. Remember that <code>setwd()</code> requires a <code>string</code> argument (whereas <code>getwd()</code> does not) to specify the path to the working directory (“path”).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">getwd</span>()
+<span class="kw">setwd</span>(<span class="st">&#39;C:/Users/Marcos/Desktop/&#39;</span>)
+<span class="kw">getwd</span>()</code></pre></div>
+<div class="note">
+<p>
+By default, in Windows the working directory is set to the <strong>Documents</strong> folder.
+</p>
+<p>
+Once the working directory is specified, everything we do in R (read files, export tables and/or graphics …) will be done in that directory. However, it is possible to work with other file system locations, specifying a different path through the arguments of some functions.
+</p>
+</div>
+</div>
+<div id="reading-data-files" class="section level2">
+<h2><span class="header-section-number">2.2</span> Reading data files</h2>
+<p>R allows you to read any type of file in ASCII format (text files). The most frequently used functions are:</p>
+<ul>
+<li><code>read.table()</code> and its different variations</li>
+<li><code>scan()</code></li>
+<li><code>read.fwf()</code></li>
+</ul>
+<p>For the development of this course we will focus on using the <code>read.table()</code> function as it is quite versatile and easy to use. Before starting to use a new function we should always take a look at the available documentation. I will take this oportunity to show you how to do this in R so that you begin to become familiar R help.</p>
+<p>Any available function in R, regardless of being a stantard one or belonging to an imported package has a documentation entry in the R help. R help describes us in detail the use of any function, providing information of the different arguments of the function, argument types, defaults, reference to the method (when applies) and even short code examples. To access the help we will use the <code>help()</code> function as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(read.table)</code></pre></div>
+<p>Entering the <code>help()</code> function we access the manual. In this case we can see a brief description of the function <code>read.table()</code> and its different variants (<code>read.csv()</code>, …). Below is the description of the arguments of the function, followed by some examples of application. This is the usual procedure for all functions available in R.</p>
+<div class="figure" style="text-align: center"><span id="fig:figure5"></span>
+<img src="images/fig5_help.png" alt="Help example" width="80%" />
+<p class="caption">
+Figure 2.1: Help example
+</p>
+</div>
+<div class="note">
+<p>
+In case we use the regular R interface or the <em>cmd</em> terminal, the help entry will open in our default web browser.
+</p>
+</div>
+<p>At first glance the <code>read.table()</code> function seems to require many arguments, while its variations seem simpler. As already mentioned, arguments are just parameters that we can specify or change to execute a function, thus <em>tunning</em> the operation of the functions and the result to be obtained.</p>
+<p>Arguments are specified within the function separated by commas (“,”). However, it is not necessary to assign a value to each one of them, since in the case of omitting an argument it is assigned a default value (always reported in the help entry). In the case of <code>read.table()</code> <em>versus</em> other functions like <code>read.csv()</code> the main advantage of using the first is that we can manipulate any argument, whereas most of them are fixed in the later. <code>read.csv()</code> is desigend to open comma separate files following the north-american standard (<code>,</code> as field delimiter and <code>.</code> as decimal separator). On the other hand, <code>read.table()</code> can potentially open any text file regardless of the separator, encoding, decimal format and so on so forth. Most of the executions of <code>read.table()</code> consist of:</p>
+<div class="fun">
+<p>
+read.table(file, header = TRUE, sep = “;”, dec = “,”)
+</p>
+</div>
+<ul>
+<li>file: path and name of the file to open.</li>
+<li>header: TRUE/FALSE argument to determine whether the first row of the data file contains column names.</li>
+<li>sep: field or column separator<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>.</li>
+<li>dec: decimal separator.</li>
+</ul>
+<p>Let’s see an example of reading file. We will read the file <em>coordinates.txt</em>, located in the Data directory. The file is structured in 3 columns with heading and separated by “;”. Al data are integer so no decimal separator is needed. See Table <a href="working-with-files.html#fig:table1">2.2</a>.</p>
+<div class="figure"><span id="fig:table1"></span>
+<div id="htmlwidget-f043c22b59b61a105dcf" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f043c22b59b61a105dcf">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14"],[364011,371655,487720,474504,436415,457549,469377,397162,434666,478383,488973,394153,426962,362216],[82500,110500,55500,28500,85500,38500,39500,124500,41500,49500,329500,77500,36500,148500],[4653500,4661500,4805500,4783500,4729500,4757500,4775500,4687500,4727500,4789500,4807500,4684500,4718500,4651500]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>FID_1<\/th>\n      <th>X_INDEX<\/th>\n      <th>Y_INDEX<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[1,2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 2.2: Structure of the coordinates.txt file.
+</p>
+</div>
+<p>The process to follow is:</p>
+<ol style="list-style-type: decimal">
+<li>Set working directory.</li>
+<li>Use the function to save the data in an object.</li>
+</ol>
+<p>If we do…</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&#39;/media/marcos/6C0C-8C4F/module-1/&#39;</span>)
+<span class="kw">read.table</span>(<span class="st">&#39;Data/coordinates.txt&#39;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>,<span class="dt">sep=</span><span class="st">&#39;;&#39;</span>)</code></pre></div>
+<p>…as we have not specified any object in which to store the result of the function, the contents of the file are simply printed on the terminal. This is a usuall mistake, don’t worry. To store and later access the contents of the file we will do the following:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setwd</span>(<span class="st">&#39;/media/marcos/6C0C-8C4F/module-1/Data&#39;</span>)
+table&lt;-<span class="kw">read.table</span>(<span class="st">&#39;coordinates.txt&#39;</span>,<span class="dt">header=</span><span class="ot">TRUE</span>,<span class="dt">sep=</span><span class="st">&#39;;&#39;</span>)
+table</code></pre></div>
+<p>Please note that:</p>
+<ul>
+<li>You have to specify your own working directory.</li>
+<li>The path to the directory is specified in text format, so you type <strong>“in quotation marks”</strong>.</li>
+<li>The name of the file to be read is also specified as text.</li>
+<li>The header argument only accepts TRUE or FALSE values.</li>
+<li>The <code>sep</code> argument also requires text values to enter de separator<a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>.</li>
+<li>It is advisable to save the data an object (table &lt;-).</li>
+</ul>
+<p>The result of <code>read.table()</code> is an <code>array</code> stored in an object named <code>table</code>. Since <code>read.table()</code> returns an <code>array</code> we can manipulate our <code>table</code> using the same procedure described in the <a href="intro.html#arrays">Arrays</a> section.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table[<span class="dv">1</span>,]</code></pre></div>
+<pre><code>##    FID_1 X_INDEX Y_INDEX
+## 1 364011   82500 4653500</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table[,<span class="dv">1</span>]</code></pre></div>
+<pre><code>##  [1] 364011 371655 487720 474504 436415 457549 469377 397162 434666 478383
+## [11] 488973 394153 426962 362216</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table[<span class="dv">1</span>,<span class="dv">1</span>]</code></pre></div>
+<pre><code>## [1] 364011</code></pre>
+<p>Below we found some interesting functions to preview and verify the information, and to know the structure of the data we have just imported. These functions are normally used to take a quick look into the first and last rows of an <code>array</code> or <code>data.frame</code> object and also to describe the structure of a given object.</p>
+<ul>
+<li><code>head()</code>: displays the first rows of the array.</li>
+<li><code>tail()</code>: displays the last rows of the array.</li>
+<li><code>str()</code>: displays the structure and data type (factor or number).</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(table)</code></pre></div>
+<pre><code>##    FID_1 X_INDEX Y_INDEX
+## 1 364011   82500 4653500
+## 2 371655  110500 4661500
+## 3 487720   55500 4805500
+## 4 474504   28500 4783500
+## 5 436415   85500 4729500
+## 6 457549   38500 4757500</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tail</span>(table)</code></pre></div>
+<pre><code>##     FID_1 X_INDEX Y_INDEX
+## 9  434666   41500 4727500
+## 10 478383   49500 4789500
+## 11 488973  329500 4807500
+## 12 394153   77500 4684500
+## 13 426962   36500 4718500
+## 14 362216  148500 4651500</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(table)</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    14 obs. of  3 variables:
+##  $ FID_1  : int  364011 371655 487720 474504 436415 457549 469377 397162 434666 478383 ...
+##  $ X_INDEX: int  82500 110500 55500 28500 85500 38500 39500 124500 41500 49500 ...
+##  $ Y_INDEX: int  4653500 4661500 4805500 4783500 4729500 4757500 4775500 4687500 4727500 4789500 ...</code></pre>
+<p>As already mentioned, <code>read.table()</code> is adequate to start reading of files to incorporate data into our working session in R. In any case we must be aware that there are other possibilities such as the <code>read.csv()</code> and <code>read.csv2()</code> that we have already seen when accessing the <code>read.table()</code> description. These functions are variations that defaults some arguments such as the field separator (columns) or the decimal character. In the help of the function you have information about it.</p>
+</div>
+<div id="writing-text-files" class="section level2">
+<h2><span class="header-section-number">2.3</span> Writing text files</h2>
+<p>Of course, we can also write text files from our data. The procedure is quite similar to read data but using <code>write.table()</code> instead of <code>read.table</code>. Remember that the created files are saved into the working directory, unless you specify an alternative path in the function arguments. As always, before starting the first thing is to consult the help of the function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(<span class="st">&quot;write.table&quot;</span>)</code></pre></div>
+<p>The arguments of the function are similar to those already seen in read.table ():</p>
+<div class="fun">
+<p>
+write.table (object, file, row.names, sep)
+</p>
+</div>
+<ul>
+<li><code>object</code>: object of type matrix (or dataframe) to write.</li>
+<li><code>file</code>: name and path to the created file (in text format).</li>
+<li><code>row.names</code>: add or not (TRUE or FALSE) queue names. FALSE is recommended.</li>
+<li><code>sep</code>: column separator (in text format).</li>
+<li><code>dec</code>: decimal separator (in text format).</li>
+</ul>
+<p>Try the following instructions<a href="#fn6" class="footnoteRef" id="fnref6"><sup>6</sup></a> and observe the different results:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.table</span>(table,<span class="st">&#39;table1.txt&#39;</span>,<span class="dt">row.names=</span><span class="ot">TRUE</span>,<span class="dt">sep=</span><span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>)
+<span class="kw">write.table</span>(table,<span class="st">&#39;table2.txt&#39;</span>,<span class="dt">row.names=</span><span class="ot">FALSE</span>,<span class="dt">sep=</span><span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>)
+<span class="kw">write.table</span>(table,<span class="st">&#39;table3.txt&#39;</span>,<span class="dt">row.names=</span><span class="ot">FALSE</span>,<span class="dt">sep=</span><span class="st">&#39;;&#39;</span>)
+<span class="kw">write.table</span>(table,<span class="st">&#39;C:/Users/Marcos/Desktop/table4.txt&#39;</span>,<span class="dt">sep=</span><span class="st">&#39;;&#39;</span>)
+<span class="kw">write.csv</span>(table,<span class="st">&#39;C:/Users/Marcos/Desktop/tabla5.csv&#39;</span>) </code></pre></div>
+</div>
+<div id="data-manipulation" class="section level2">
+<h2><span class="header-section-number">2.4</span> Data manipulation</h2>
+<p>Let’s see the most common instructions for manipulating and extracting information in R. Specifically we will see how to extract subsets of data from objects of type <code>vector</code>, <code>array</code> or <code>dataframe</code>. We will also see how to create new data sets from the aggregation of several objects. There are many commands that allow us to manipulate our data in R. Many things can be understood as <em>manipulation</em> but for the moment we will focus on:</p>
+<ul>
+<li>Select or extract information</li>
+<li>Sort tables</li>
+<li>Add rows or columns to a table</li>
+</ul>
+<p>As you might already guess, we will work with tabular data like <code>arrays</code> and <code>data.frames</code> which I further refer to as <strong>tables</strong>.</p>
+<div id="working-with-columns" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> Working with columns</h3>
+<p>The first thing we will do is access the information stored in the column(s) of a given table object. There are two basic ways to do this:</p>
+<ol style="list-style-type: decimal">
+<li>Using the position index of the column.</li>
+<li>Using the name (header) of the column.</li>
+</ol>
+<p>These two basic forms are not always interchangeable, so we will use one or the other depending on the case. It is recommended that you use the one that feels most comfortable for you. However, in most examples the column position index is used since it is a numerical value that is very easily integrated with loops and other iterative processes.</p>
+<div id="extracting-columns" class="section level4">
+<h4><span class="header-section-number">2.4.1.1</span> Extracting columns</h4>
+<p>To extract columns using the position index we will use a series of instructions similar to those already seen in extracting information from <a href="intro.html#arrays">Arrays</a>, <a href="intro.html#vectors">Vectors</a> and <a href="intro.html#lists">Lists</a>. The following statement returns the information of the second column of the <code>array</code> object <code>table</code> and stores it in a new object that we called <code>col2</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">col2 &lt;-<span class="st"> </span>table[,<span class="dv">2</span>]
+col2</code></pre></div>
+<pre><code>##  [1]  82500 110500  55500  28500  85500  38500  39500 124500  41500  49500
+## [11] 329500  77500  36500 148500</code></pre>
+<p>It is also possible to extract a range of columns, proceeding in a similar way to what has already been seen in the creation of vectors. The following statement extracts columns 2 and 3 from the <code>table</code> object and stores them in a new object called <code>cols</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cols &lt;-<span class="st"> </span>table[,<span class="dv">2</span>:<span class="dv">3</span>]
+cols</code></pre></div>
+<pre><code>##    X_INDEX Y_INDEX
+## 1    82500 4653500
+## 2   110500 4661500
+## 3    55500 4805500
+## 4    28500 4783500
+## 5    85500 4729500
+## 6    38500 4757500
+## 7    39500 4775500
+## 8   124500 4687500
+## 9    41500 4727500
+## 10   49500 4789500
+## 11  329500 4807500
+## 12   77500 4684500
+## 13   36500 4718500
+## 14  148500 4651500</code></pre>
+<p>Now let’s see how to select columns using their name. Name extraction is performed using a combination of object and column name object using <code>$</code> to separte <code>object</code> from <code>column name</code>. The following statement selects the column named <code>Y_INDEX</code> from the <code>array</code> object <code>table</code> and stores it in <code>col.Y_INDEX</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">col.Y_INDEX &lt;-<span class="st"> </span>table$Y_INDEX
+col.Y_INDEX</code></pre></div>
+<pre><code>##  [1] 4653500 4661500 4805500 4783500 4729500 4757500 4775500 4687500
+##  [9] 4727500 4789500 4807500 4684500 4718500 4651500</code></pre>
+<p>A key piece of information here is the name of the column which we need to know in advance. Well, we can check the original text file or inspect the object <code>table</code> using <code>str()</code>. We can also take look to the top-right window activaing the <em>Environment</em> sub-window and unwrap <code>table</code> but be aware this can be only accessed using RStudio.</p>
+<p>The main difference between these two methods is that index selection makes it possible to extract column ranges easily. To do this using the name of the columns you have to use functions like <code>subset()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cols2 &lt;-<span class="st"> </span><span class="kw">subset</span>(table, <span class="dt">select =</span> <span class="kw">c</span>(X_INDEX,Y_INDEX))</code></pre></div>
+<p>Using the argument <code>select</code> we can point the columns that we want to extract using a vector with column names. Using <code>subset()</code> it is also possible to specify the columns that we <strong>do NOT want to extract</strong>. To do this proceed as follows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cols2 &lt;-<span class="st"> </span><span class="kw">subset</span>(table, <span class="dt">select =</span> -<span class="kw">c</span>(X_INDEX,Y_INDEX))</code></pre></div>
+<p>In this way we would only extract the first column, excluding X_INDEX and Y_INDEX. Of cours, we can do this using the column index as well:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cols2 &lt;-<span class="st"> </span>table[,-(<span class="dv">2</span>:<span class="dv">3</span>)]</code></pre></div>
+</div>
+<div id="merge-columns-and-tables" class="section level4">
+<h4><span class="header-section-number">2.4.1.2</span> Merge columns and tables</h4>
+<p>The main reason why we are learning how to manipulate table columns is to be able to prepare our data for other purposes. It may be the case we need to join tables or columns that proceed from the same original table. The instruction <code>cbind()</code> allow us to merge together several tables and/or vectors <strong>provided they have the same number of rows</strong>. We can merge as many objects as we want to, by separating them using <code>,</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cols3 &lt;-<span class="st"> </span><span class="kw">cbind</span>(col2,cols2)
+cols3</code></pre></div>
+<pre><code>##         col2  cols2
+##  [1,]  82500 364011
+##  [2,] 110500 371655
+##  [3,]  55500 487720
+##  [4,]  28500 474504
+##  [5,]  85500 436415
+##  [6,]  38500 457549
+##  [7,]  39500 469377
+##  [8,] 124500 397162
+##  [9,]  41500 434666
+## [10,]  49500 478383
+## [11,] 329500 488973
+## [12,]  77500 394153
+## [13,]  36500 426962
+## [14,] 148500 362216</code></pre>
+</div>
+<div id="changing-column-names" class="section level4">
+<h4><span class="header-section-number">2.4.1.3</span> Changing column names</h4>
+<p>It is often the case we need to alter or change the name of a table object. If we wanted to rename all the columns of an object we would to pass a <code>vector</code> with names to the function <code>colnames()</code> in case we are renaming an <code>array</code> or <code>names()</code> if we are dealing with a <code>data.frame</code>. Note that the <code>vector</code> should have the same length as the total number of columns. Lets rename our table <code>cols3</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colnames</span>(cols3)&lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;COL1&quot;</span>,<span class="st">&quot;COL2&quot;</span>)</code></pre></div>
+<p>What if we want to change only a given name. Then we just point to the column header using the position index like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">colnames</span>(cols3)[<span class="dv">2</span>]&lt;-<span class="st"> &quot;RENAMED COLUMN&quot;</span></code></pre></div>
+<p>You may be wondering <em>How can I know what kind of object is my table?</em>. That is a very good question. Specially at the begining is quite difficult to be in control this stuff. If you use RStudio you already see a description of the objects in the top-right window. <code>array</code> or <code>matrix</code> objects show something like <code>[1:14,1:2]</code> indicating multiple dimensions, <code>vectors</code> are similar but with only 1 dimension <code>[1:14]</code> and <code>data.frames</code> show the word <code>data.frame</code> in their description. However, this is not the fancy way to deal with object types. Just for the record, when I mean <strong>type</strong> an actual code developer means <strong>class</strong>. Of course there is a function called <code>class()</code> that returns the class an object belongs to:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(cols3)</code></pre></div>
+<pre><code>## [1] &quot;matrix&quot;</code></pre>
+</div>
+<div id="sorting-our-data" class="section level4">
+<h4><span class="header-section-number">2.4.1.4</span> Sorting our data</h4>
+<p>Finally, let’s look at how to sort columns and <code>arrays</code>. To sort a column in R, the <code>sort()</code> function is used. The general function of the function is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sort</span>(cols3[,<span class="dv">1</span>])</code></pre></div>
+<pre><code>##  [1]  28500  36500  38500  39500  41500  49500  55500  77500  82500  85500
+## [11] 110500 124500 148500 329500</code></pre>
+<p>If we want to reorder an array based on the values of one of its columns, we will use the order () function. The general operation of the function is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table[<span class="kw">order</span>(table$X_INDEX),]</code></pre></div>
+<pre><code>##     FID_1 X_INDEX Y_INDEX
+## 4  474504   28500 4783500
+## 13 426962   36500 4718500
+## 6  457549   38500 4757500
+## 7  469377   39500 4775500
+## 9  434666   41500 4727500
+## 10 478383   49500 4789500
+## 3  487720   55500 4805500
+## 12 394153   77500 4684500
+## 1  364011   82500 4653500
+## 5  436415   85500 4729500
+## 2  371655  110500 4661500
+## 8  397162  124500 4687500
+## 14 362216  148500 4651500
+## 11 488973  329500 4807500</code></pre>
+<p>To be honest, in this last example we are actually working with rows. Take a look at the position of the <code>,</code>. The brackets are also something that we will use later to extract data from a table. But it feels right to bring here the <code>order()</code> command right after <code>sort()</code>.</p>
+</div>
+</div>
+<div id="working-with-rows" class="section level3">
+<h3><span class="header-section-number">2.4.2</span> Working with rows</h3>
+<p>Let us now turn to the manipulation of rows. The procedure is basically the same as in the case of columns, except for the fact that we normally do not work with names assigned to rows (although that’s a possibility), but we refer to a row using its position. To extract rows or combine several objects according to their rows we use the following expressions:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">row1 &lt;-<span class="st"> </span>table[<span class="dv">1</span>:<span class="dv">5</span>,]
+row2 &lt;-<span class="st"> </span>table[-(<span class="dv">6</span>:<span class="dv">7</span>),]
+row3 &lt;-<span class="st"> </span><span class="kw">rbind</span>(row1,row2)</code></pre></div>
+<p>Same as with <a href="intro.html#arrays">Arrays</a> we point to rows instead of columns when we use the index value to the left of the <code>[row,col]</code>. So that’s the thing, we just change that and we are dealing with rows. We can join rows and tables using the <code>rbind()</code> function rather than <code>cbind()</code>. <code>r</code> stands for <code>row</code> and <code>c</code> for <code>column</code>.</p>
+<p>We can extract a subsample of rows that meet a given criteria:</p>
+<div class="fun">
+<p>
+table[criteria,]
+</p>
+</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table[table$X_INDEX==<span class="dv">82500</span>,]</code></pre></div>
+<pre><code>##    FID_1 X_INDEX Y_INDEX
+## 1 364011   82500 4653500</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">table[table$X_INDEX&gt;<span class="dv">82500</span>,]</code></pre></div>
+<pre><code>##     FID_1 X_INDEX Y_INDEX
+## 2  371655  110500 4661500
+## 5  436415   85500 4729500
+## 8  397162  124500 4687500
+## 11 488973  329500 4807500
+## 14 362216  148500 4651500</code></pre>
+<p>Oh, I expect you to have found out this by yourself but evidently we can combine row and column manipulation if that fits our purpose.</p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="4">
+<li id="fn4"><p>use <code>\t</code> for tab<a href="working-with-files.html#fnref4">↩</a></p></li>
+<li id="fn5"><p>the same applies for <code>dec</code><a href="working-with-files.html#fnref5">↩</a></p></li>
+<li id="fn6"><p>Remember to adapt the path to your own folder structure<a href="working-with-files.html#fnref6">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="basic-instructions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/02-files.Rmd",
+"text": "Edit"
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

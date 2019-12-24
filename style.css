@@ -1,0 +1,50 @@
+body{
+  text-align: justify;
+}
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+.note{
+  background-color: lightgreen;
+  border-radius: 4px;
+  color: black;
+  padding: 10px 15px 5px 10px;
+  font: arial;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
+.fun{
+  background-color: lightblue;
+  margin-left:auto;
+  text-align: center;
+  border-radius: 4px;
+  color: black;
+  padding: 10px 15px 5px 10px;
+  font: arial;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
+.exer{
+  background-color: #D1AD56;
+  border-radius: 4px;
+  color: black;
+  padding: 10px 15px 5px 10px;
+  font: arial;
+  margin-top:5px;
+  margin-bottom:5px;
+}

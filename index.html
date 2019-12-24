@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Introduction to spatial statistics with R</title>
+  <meta name="description" content="Introduction to spatial statistics with R" />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Introduction to spatial statistics with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to spatial statistics with R" />
+  
+  
+  
+
+<meta name="author" content="Marcos Rodrigues" />
+
+
+<meta name="date" content="2019-12-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="intro.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MODULE 1: Introduction to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prologue</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> A brief introduction to R</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#getting-and-installing-r"><i class="fa fa-check"></i><b>1.1.1</b> Getting and installing R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#documentation-manuals-and-help"><i class="fa fa-check"></i><b>1.1.2</b> Documentation, manuals and help</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#starting-with-r"><i class="fa fa-check"></i><b>1.2</b> Starting with R</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#the-r-environment"><i class="fa fa-check"></i><b>1.2.1</b> The R environment</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#working-with-r"><i class="fa fa-check"></i><b>1.3</b> Working with R</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#objects-in-r"><i class="fa fa-check"></i><b>1.4</b> Objects in R</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#creating-objects"><i class="fa fa-check"></i><b>1.4.1</b> Creating objects</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#vectors"><i class="fa fa-check"></i><b>1.4.2</b> Vectors</a></li>
+<li class="chapter" data-level="1.4.3" data-path="intro.html"><a href="intro.html#lists"><i class="fa fa-check"></i><b>1.4.3</b> Lists</a></li>
+<li class="chapter" data-level="1.4.4" data-path="intro.html"><a href="intro.html#arrays"><i class="fa fa-check"></i><b>1.4.4</b> Arrays</a></li>
+<li class="chapter" data-level="1.4.5" data-path="intro.html"><a href="intro.html#data.frame"><i class="fa fa-check"></i><b>1.4.5</b> Data.frame</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#object-management"><i class="fa fa-check"></i><b>1.5</b> Object management</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#functions-and-arguments"><i class="fa fa-check"></i><b>1.6</b> Functions and arguments</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#scripts-in-r"><i class="fa fa-check"></i><b>1.7</b> Scripts in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="working-with-files.html"><a href="working-with-files.html"><i class="fa fa-check"></i><b>2</b> Working with files</a><ul>
+<li class="chapter" data-level="2.1" data-path="working-with-files.html"><a href="working-with-files.html#the-working-directory"><i class="fa fa-check"></i><b>2.1</b> The working directory</a></li>
+<li class="chapter" data-level="2.2" data-path="working-with-files.html"><a href="working-with-files.html#reading-data-files"><i class="fa fa-check"></i><b>2.2</b> Reading data files</a></li>
+<li class="chapter" data-level="2.3" data-path="working-with-files.html"><a href="working-with-files.html#writing-text-files"><i class="fa fa-check"></i><b>2.3</b> Writing text files</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-files.html"><a href="working-with-files.html#data-manipulation"><i class="fa fa-check"></i><b>2.4</b> Data manipulation</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="working-with-files.html"><a href="working-with-files.html#working-with-columns"><i class="fa fa-check"></i><b>2.4.1</b> Working with columns</a></li>
+<li class="chapter" data-level="2.4.2" data-path="working-with-files.html"><a href="working-with-files.html#working-with-rows"><i class="fa fa-check"></i><b>2.4.2</b> Working with rows</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-instructions.html"><a href="basic-instructions.html"><i class="fa fa-check"></i><b>3</b> Basic instructions</a><ul>
+<li class="chapter" data-level="3.1" data-path="basic-instructions.html"><a href="basic-instructions.html#descriptive-statistics-and-summaries"><i class="fa fa-check"></i><b>3.1</b> Descriptive statistics and summaries</a></li>
+<li class="chapter" data-level="3.2" data-path="basic-instructions.html"><a href="basic-instructions.html#the-apply-function"><i class="fa fa-check"></i><b>3.2</b> The <em>apply()</em> function</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-instructions.html"><a href="basic-instructions.html#installing-packages"><i class="fa fa-check"></i><b>3.3</b> Installing packages</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="basic-instructions.html"><a href="basic-instructions.html#installing-an-external-package"><i class="fa fa-check"></i><b>3.3.1</b> Installing an external package</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="basic-instructions.html"><a href="basic-instructions.html#create-a-function"><i class="fa fa-check"></i><b>3.4</b> Create a function</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="plotting-with-r.html"><a href="plotting-with-r.html"><i class="fa fa-check"></i><b>4</b> Plotting with R</a><ul>
+<li class="chapter" data-level="4.1" data-path="plotting-with-r.html"><a href="plotting-with-r.html#basic-plots"><i class="fa fa-check"></i><b>4.1</b> Basic plots</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="plotting-with-r.html"><a href="plotting-with-r.html#dot-or-point-plots"><i class="fa fa-check"></i><b>4.1.1</b> Dot or point plots</a></li>
+<li class="chapter" data-level="4.1.2" data-path="plotting-with-r.html"><a href="plotting-with-r.html#line-plots"><i class="fa fa-check"></i><b>4.1.2</b> Line plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="plotting-with-r.html"><a href="plotting-with-r.html#histograms"><i class="fa fa-check"></i><b>4.2</b> Histograms</a></li>
+<li class="chapter" data-level="4.3" data-path="plotting-with-r.html"><a href="plotting-with-r.html#scatterplots"><i class="fa fa-check"></i><b>4.3</b> Scatterplots</a></li>
+<li class="chapter" data-level="4.4" data-path="plotting-with-r.html"><a href="plotting-with-r.html#multiple-plots"><i class="fa fa-check"></i><b>4.4</b> Multiple plots</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="plotting-with-r.html"><a href="plotting-with-r.html#create-a-combined-plot"><i class="fa fa-check"></i><b>4.4.1</b> Create a combined plot</a></li>
+<li class="chapter" data-level="4.4.2" data-path="plotting-with-r.html"><a href="plotting-with-r.html#export-an-image-file"><i class="fa fa-check"></i><b>4.4.2</b> Export an image file</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i>Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to spatial statistics with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Introduction to spatial statistics with R</h1>
+<p class="author"><em>Marcos Rodrigues</em></p>
+<p class="date"><em>2019-12-11</em></p>
+</div>
+<div id="prologue" class="section level1 unnumbered">
+<h1>Prologue</h1>
+<p>This document constitutes the manual for the course on <em>Introductio to spatial statistics with R (111019-1718)</em> of the <strong>European Master’s Degree in Forestry</strong>.</p>
+<p>This course covers the basics of R usage, an introduction to plotting and mapping and the essential concepts of spatial data management and modeling. The course focuses on several regression and classification algorithms (Multiple Linear Regression, Generalized Linear Models, CART and Random Forest), also exploring classic interpolation methods (Inverse Distance Weighting and Kriging).</p>
+<p>For any questions regarding the matherials or contents of this manual please contact with <a href="mailto:rmarcos@unizar.es">rmarcos@unizar.es</a>.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

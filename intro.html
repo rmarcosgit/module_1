@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introduction to spatial statistics with R</title>
+  <meta name="description" content="Introduction to spatial statistics with R">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introduction to spatial statistics with R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to spatial statistics with R" />
+  
+  
+  
+
+<meta name="author" content="Marcos Rodrigues">
+
+
+<meta name="date" content="2017-10-27">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="working-with-files.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/datatables-binding-0.2/datatables.js"></script>
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.12/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.12/js/jquery.dataTables.min.js"></script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MODULE 1: Introduction to R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Prologue</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> A brief introduction to R</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#getting-and-installing-r"><i class="fa fa-check"></i><b>1.1.1</b> Getting and installing R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#documentation-manuals-and-help"><i class="fa fa-check"></i><b>1.1.2</b> Documentation, manuals and help</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#starting-with-r"><i class="fa fa-check"></i><b>1.2</b> Starting with R</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#the-r-environment"><i class="fa fa-check"></i><b>1.2.1</b> The R environment</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#working-with-r"><i class="fa fa-check"></i><b>1.3</b> Working with R</a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#objects-in-r"><i class="fa fa-check"></i><b>1.4</b> Objects in R</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#creating-objects"><i class="fa fa-check"></i><b>1.4.1</b> Creating objects</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#vectors"><i class="fa fa-check"></i><b>1.4.2</b> Vectors</a></li>
+<li class="chapter" data-level="1.4.3" data-path="intro.html"><a href="intro.html#lists"><i class="fa fa-check"></i><b>1.4.3</b> Lists</a></li>
+<li class="chapter" data-level="1.4.4" data-path="intro.html"><a href="intro.html#arrays"><i class="fa fa-check"></i><b>1.4.4</b> Arrays</a></li>
+<li class="chapter" data-level="1.4.5" data-path="intro.html"><a href="intro.html#data.frame"><i class="fa fa-check"></i><b>1.4.5</b> Data.frame</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#object-management"><i class="fa fa-check"></i><b>1.5</b> Object management</a></li>
+<li class="chapter" data-level="1.6" data-path="intro.html"><a href="intro.html#functions-and-arguments"><i class="fa fa-check"></i><b>1.6</b> Functions and arguments</a></li>
+<li class="chapter" data-level="1.7" data-path="intro.html"><a href="intro.html#scripts-in-r"><i class="fa fa-check"></i><b>1.7</b> Scripts in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="working-with-files.html"><a href="working-with-files.html"><i class="fa fa-check"></i><b>2</b> Working with files</a><ul>
+<li class="chapter" data-level="2.1" data-path="working-with-files.html"><a href="working-with-files.html#the-working-directory"><i class="fa fa-check"></i><b>2.1</b> The working directory</a></li>
+<li class="chapter" data-level="2.2" data-path="working-with-files.html"><a href="working-with-files.html#reading-data-files"><i class="fa fa-check"></i><b>2.2</b> Reading data files</a></li>
+<li class="chapter" data-level="2.3" data-path="working-with-files.html"><a href="working-with-files.html#writing-text-files"><i class="fa fa-check"></i><b>2.3</b> Writing text files</a></li>
+<li class="chapter" data-level="2.4" data-path="working-with-files.html"><a href="working-with-files.html#data-manipulation"><i class="fa fa-check"></i><b>2.4</b> Data manipulation</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="working-with-files.html"><a href="working-with-files.html#working-with-columns"><i class="fa fa-check"></i><b>2.4.1</b> Working with columns</a></li>
+<li class="chapter" data-level="2.4.2" data-path="working-with-files.html"><a href="working-with-files.html#working-with-rows"><i class="fa fa-check"></i><b>2.4.2</b> Working with rows</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basic-instructions.html"><a href="basic-instructions.html"><i class="fa fa-check"></i><b>3</b> Basic instructions</a><ul>
+<li class="chapter" data-level="3.1" data-path="basic-instructions.html"><a href="basic-instructions.html#descriptive-statistics-and-summaries"><i class="fa fa-check"></i><b>3.1</b> Descriptive statistics and summaries</a></li>
+<li class="chapter" data-level="3.2" data-path="basic-instructions.html"><a href="basic-instructions.html#the-apply-function"><i class="fa fa-check"></i><b>3.2</b> The <em>apply()</em> function</a></li>
+<li class="chapter" data-level="3.3" data-path="basic-instructions.html"><a href="basic-instructions.html#installing-packages"><i class="fa fa-check"></i><b>3.3</b> Installing packages</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="basic-instructions.html"><a href="basic-instructions.html#installing-an-external-package"><i class="fa fa-check"></i><b>3.3.1</b> Installing an external package</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="basic-instructions.html"><a href="basic-instructions.html#create-a-function"><i class="fa fa-check"></i><b>3.4</b> Create a function</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="plotting-with-r.html"><a href="plotting-with-r.html"><i class="fa fa-check"></i><b>4</b> Plotting with R</a><ul>
+<li class="chapter" data-level="4.1" data-path="plotting-with-r.html"><a href="plotting-with-r.html#basic-plots"><i class="fa fa-check"></i><b>4.1</b> Basic plots</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="plotting-with-r.html"><a href="plotting-with-r.html#dot-or-point-plots"><i class="fa fa-check"></i><b>4.1.1</b> Dot or point plots</a></li>
+<li class="chapter" data-level="4.1.2" data-path="plotting-with-r.html"><a href="plotting-with-r.html#line-plots"><i class="fa fa-check"></i><b>4.1.2</b> Line plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="plotting-with-r.html"><a href="plotting-with-r.html#histograms"><i class="fa fa-check"></i><b>4.2</b> Histograms</a></li>
+<li class="chapter" data-level="4.3" data-path="plotting-with-r.html"><a href="plotting-with-r.html#scatterplots"><i class="fa fa-check"></i><b>4.3</b> Scatterplots</a></li>
+<li class="chapter" data-level="4.4" data-path="plotting-with-r.html"><a href="plotting-with-r.html#multiple-plots"><i class="fa fa-check"></i><b>4.4</b> Multiple plots</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="plotting-with-r.html"><a href="plotting-with-r.html#create-a-combined-plot"><i class="fa fa-check"></i><b>4.4.1</b> Create a combined plot</a></li>
+<li class="chapter" data-level="4.4.2" data-path="plotting-with-r.html"><a href="plotting-with-r.html#export-an-image-file"><i class="fa fa-check"></i><b>4.4.2</b> Export an image file</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i>Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to spatial statistics with R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> A brief introduction to R</h1>
+<div id="what-is-r" class="section level2">
+<h2><span class="header-section-number">1.1</span> What is R?</h2>
+<p>R is an object-oriented programming language and environment for statistical computing that provides relatively simple access to a wide variety of statistical techniques <span class="citation">(R Core Team <a href="#ref-R-base">2016</a>)</span>. R offers a complete programming language with which to add new methods by defining functions or automating iterative processes.</p>
+<p>Many statistical techniques, from the classic to the latest methodologies, are available in R, with the user in charge of locating the package that best suits their needs.</p>
+<p>R can be considered as an integrated set of programs for data manipulation, calculation and graphics. Among other features R allows:</p>
+<ul>
+<li>effective data storage and manipulation,</li>
+<li>operators for calculation on indexed variables,</li>
+<li>a comprehensive, coherent and integrated collection of data analysis tools,</li>
+<li>plotting possibilities, which work directly on screen or printer, and</li>
+<li>a well-developed, simple and effective programming language, including conditionals, loops, recursive functions and the possibility of inputs and outputs.</li>
+</ul>
+<p>R is distributed as open source software, so obtaining it is completely free.</p>
+<p>R is also multiplatform software which means it can be installed and used in various operating systems (OS), mainly Windows and Linux. However, the available functions and packages syntax is practically the same in any OS. From an operational point of view, R consists of a base system and additional packages that extend its functionality. Among the main types of packags we found:</p>
+<ul>
+<li>Those that are part of the base system (ctest).</li>
+<li>Those that are not part of the base system, but are recommended (<em>survival</em>, <em>nlme</em>). In GNU/Linux and Windows these packages are already part of the standard distribution.</li>
+<li>Other packages such as <em>UsingR</em>, <em>foreing</em>, or <em>Maptools</em>. These must be selected and installed individually. We will see how to do this later.</li>
+</ul>
+<div class="note">
+<p>
+The functions included in the packages installed by default, that is, those that are predefined in the basic installation R, are available for use at any time. However, <strong>in order to use the functions of new packages, specific calls must be made to those packages</strong>.
+</p>
+</div>
+<div id="getting-and-installing-r" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Getting and installing R</h3>
+<p>The installation of R depends on the operating system to be used. You can find all the necessary information in:</p>
+<ul>
+<li><a href="http://cran.r-project.org/" class="uri">http://cran.r-project.org/</a></li>
+<li>Windows: <a href="http://cran.r-project.org/bin/windows/" class="uri">http://cran.r-project.org/bin/windows/</a></li>
+<li>Linux: <a href="http://cran.r-project.org/bin/linux/" class="uri">http://cran.r-project.org/bin/linux/</a></li>
+</ul>
+<p>For the development of this course I will use the Windows version but feel free to use whatever version fits your needs. The last version of R is downloadable from <a href="https://cran.r-project.org/bin/windows/base/">here</a>. We will install the latest version available. Remember that you have to install the version that corresponds to the architecture of your OS (32 or 64 bits). In case of doubt install both versions or at least the 32-bit version, which will always work on our computer.</p>
+<p>Installation in Windows is very simple. Just run the executable (.exe) file and follow the installation steps (basically say <em>Yes</em> to everything). Once R is installed, we will install <strong>RStudio</strong> an integrated development environment (IDE) that is more user-friendly than the basic R interface. RStudio provides a more complete environment and some useful tools such as:</p>
+<ul>
+<li>Autocomplete instructions<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>.</li>
+<li>Object management.</li>
+<li>Data display and visualization.</li>
+<li>Exporting plots and figures.</li>
+</ul>
+<p>We will install the latest version of <a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a>. You can see the installation steps in the installation video tutorial.</p>
+<div class="note">
+<ul>
+<li>
+Note that RStudio is just an <em>interface</em>. Any code block or instruction will work in any other R environment.
+</li>
+<li>
+Before installing RStudio you need to have already installed the standard R software.
+</li>
+</ul>
+</div>
+</div>
+<div id="documentation-manuals-and-help" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> Documentation, manuals and help</h3>
+<p>Being an open source software and with a strong collaborative component R has a large amount of resources and documentation relative to the specific syntax of the language itself (control structures, function creation, calls to objects …) and to every single package available as well.</p>
+<p>On the other hand, R counts on a series of manuals which are available right after installing the software. You can find them in the installation directory of R (C:Files-X.X.X). These manuals and many others can also be downloaded from the <a href="https://cran.r-project.org/">R project website</a>:</p>
+<ul>
+<li>Writing R extensions.</li>
+<li>R data import / export.</li>
+<li>The R language definition.</li>
+<li>R installation and administration.</li>
+<li>An introduction to R.</li>
+</ul>
+<p>Finally, in addition to the wide repertoire of manuals available, there is also a wide range of resources and online help including:</p>
+<ul>
+<li><a href="http://www.r-bloggers.com/" class="uri">http://www.r-bloggers.com/</a>. A website dedicated to R development of tutorials.</li>
+<li><a href="http://www.r-project.org/mail.html" class="uri">http://www.r-project.org/mail.html</a>. R help mailing lists with various interest groups including the R (r-sig-geo) GIS user community.</li>
+<li><a href="http://stackoverflow.com/" class="uri">http://stackoverflow.com/</a>. Website devoted to questions-and-answers on programming languages among which is R also available<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>.</li>
+<li><a href="http://www.r-tutor.com/" class="uri">http://www.r-tutor.com/</a>. A website devoted to teach statistics. An useful one if you are not much familiar with basic statistical methods.</li>
+</ul>
+<p>It is relatively important to become familiar from the beginning with the various alternatives for getting help. A key part of your success in using R lies in your ability to be self-relient and be able to get help and apply it to your own problems.</p>
+</div>
+</div>
+<div id="starting-with-r" class="section level2">
+<h2><span class="header-section-number">1.2</span> Starting with R</h2>
+<div id="the-r-environment" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> The R environment</h3>
+<p>R is basically a command line environment that allows the user to interact with the system to enter data, perform mathematical calculations or visualize results through plots and maps.</p>
+<p>Figure <a href="intro.html#fig:figure1">1.1</a> shows the <em>standard</em> appearance of the R console, which can be considered as a windows <em>cmd</em> like <em>terminal</em> or <em>console</em>. We have also seen what the terminal and working environment looks like in RStudio at the end of the installation process (Figure <a href="intro.html#fig:figure2">1.2</a>). A third possibility is to work directly on the <em>cmd</em> terminal (Figure <a href="intro.html#fig:figure3">1.3</a>). The commands and instructions are the same regardless of the environment that we chose. In this course we will focus on the use of RStudio, since it is the simplest of them all.</p>
+<div class="figure" style="text-align: center"><span id="fig:figure1"></span>
+<img src="images/fig1_rterminal.png" alt="R standard terminal" width="80%" />
+<p class="caption">
+Figure 1.1: R standard terminal
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:figure2"></span>
+<img src="images/fig2_rstudioterminal.png" alt="RStudio interface" width="80%" />
+<p class="caption">
+Figure 1.2: RStudio interface
+</p>
+</div>
+<div class="figure" style="text-align: center"><span id="fig:figure3"></span>
+<img src="images/fig3_cmdterminal.png" alt="R cmd terminal" width="80%" />
+<p class="caption">
+Figure 1.3: R cmd terminal
+</p>
+</div>
+<p>The terminal (regardless of the chosen option) is usually the main working window and is where we will introduce the necessary instructions to carry out our operations. It is in this window where we will visualize the results from most instructions and objects we generate. An exception to this are plots and maps which are displayed in a specifically-devoted window located in the bottom-right corner.</p>
+</div>
+</div>
+<div id="working-with-r" class="section level2">
+<h2><span class="header-section-number">1.3</span> Working with R</h2>
+<p>Let’s get started and insert our first command in the R’s terminal. When R is ready or awaiting us to input an instruction the terminal shows a cursor right after a <em>&gt;</em> symbol to indicate it.</p>
+<div class="figure" style="text-align: center"><span id="fig:figure4"></span>
+<img src="images/fig4_instruction.png" alt="R waiting for instructions" width="80%" />
+<p class="caption">
+Figure 1.4: R waiting for instructions
+</p>
+</div>
+<p>At this point it is necessary to take into account that R is an interpreted language, which means that the different instructions or functions that we specify are read and executed one by one. The procedure is more or less as follows. We introduce an instruction in the R console, the application interprets and executes it, and finally generates or returns the result.   To better understand this concept we will do a little test using the R console as a calculator. Open the working environment of RStudio if you did not already open it and enter the following statement and press enter:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10+2</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<p>What just happened is that the R interpreter has read the instruction, in this case a simple arithmetic operation, executed it and returned the result. This is the basic way to proceed to enter operations. However, it will not be necessary for us to always enter the instructions manually. Later we will see how to create scripts or introduce blocks of instructions.</p>
+</div>
+<div id="objects-in-r" class="section level2">
+<h2><span class="header-section-number">1.4</span> Objects in R</h2>
+<p>We have previously mentioned some features of R such as that R is an object-oriented language. But, what does this mean? It basically means that to perform any type of task we use objects. Everything in R is an object (functions, variables, results …). Thus, entities that are created and manipulated in R are called objects, including data, functions and other structures.</p>
+<p>Objects are stored and characterized by their name and content. Depending on the type of object we create that object will have a given set of characteristics. Generally the first objects one creates are those of variable type, in which we will be able to store a piece of data and information. The main objects of variable type in R are:</p>
+<ul>
+<li>Number: an integer or decimal number depending on whether we specify decimal figures.</li>
+<li>Factor:a categorical variable or text.</li>
+<li>Vector: a list of values of the same type.</li>
+<li>Array: a vector of <span class="math inline">\(k\)</span> dimensions.</li>
+<li>Matrix: a particular case of array where <span class="math inline">\(k = 2\)</span> (rows, cols).</li>
+<li>Data.frame: table composed of vectors.</li>
+<li>List: vector with values of different types.</li>
+</ul>
+<p>Obviously there are other types of objects in R. For example, another object with which we are going to familiarize ourselves is the <em>model</em> objects. We can create them by storing the output of executing some kind of model like a linear regression model for instance. Spatial data also fits in its particular variety of objecto. Thororugh the course we will see both models and spatial information (vector<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> and raster).</p>
+<div id="creating-objects" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Creating objects</h3>
+<p>Objects in R are created by declarating a variable by specifing its name and then assign it a value using the <code>&lt;-</code> operator. We can also use <code>=</code> but the <code>&lt;-</code> operator is most commonly found in examples and manuals.</p>
+<p>So, to create an object and assign it a value the basic instruction is composed of <code>object name &lt;- value</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">4</span></code></pre></div>
+<p>Prueba a introducir las siguientes instrucciones para crear distintos tipos de objeto:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">15</span>
+x &lt;-<span class="st"> </span><span class="fl">1.0</span>
+name &lt;-<span class="st"> &quot;Marcos&quot;</span></code></pre></div>
+<p>We can also store in an object the result form any operarion:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="dv">10+2</span></code></pre></div>
+<p>So here is the thing. The type of object we create depends on the content that we assign. Therefor, if we assign a numeric value, we are creating an object of type number (integer or decimal) and if we assign a text string (any quoted text, either with single or double quotes), we are creating a text type object or string. Once created, the objects are visualized using calls using the name that we have assigned to the object. That is, we will write to the terminal in the name of the object and then its value will be shown.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n</code></pre></div>
+<pre><code>## [1] 12</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">name</code></pre></div>
+<pre><code>## [1] &quot;Marcos&quot;</code></pre>
+<p>Some considerations to keep in mind when creating objects or working with R in general lines:</p>
+<ol style="list-style-type: decimal">
+<li>R is <strong>case-sensitive</strong> so radio ≠ Radio</li>
+<li>If a new value is assigned to an object it is overwritten and <strong>deletes the previous value</strong>.</li>
+<li>Textual information (also knwon as string or char) is entered between quotation marks, either single (<code>''</code>) or double (<code>&quot;&quot;</code>).</li>
+<li>The function <code>ls()</code> will show us in the terminal the objects created so far.</li>
+<li>If the value obtained from an instruction is not assigned in an object it is only displayed in the terminal, it is not stored.</li>
+</ol>
+</div>
+<div id="vectors" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> Vectors</h3>
+<p>One of the most common objects in R is the vector. A vector can store several values, which must necessarily be of the same type (all numbers, all text, and so forth). There are several ways to create vectors. Try entering the following instructions and viewing the created objects:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
+v1</code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v2 &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+v2</code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v3 &lt;-<span class="st"> </span>-<span class="dv">5</span>:<span class="dv">3</span>
+v3</code></pre></div>
+<pre><code>## [1] -5 -4 -3 -2 -1  0  1  2  3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v4 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;spatial&#39;</span>,<span class="st">&#39;statistics&#39;</span>,<span class="st">&#39;rules!!&#39;</span>)
+v4</code></pre></div>
+<pre><code>## [1] &quot;spatial&quot;    &quot;statistics&quot; &quot;rules!!&quot;</code></pre>
+<p>We have just covered the basic methods for vector creation. The most common approach is use the function <code>c()</code> which allow as to introduce values manually by separatting them using <code>,</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v1 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)
+v1</code></pre></div>
+<pre><code>## [1] 1 2 3 4 5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v4 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&#39;spatial&#39;</span>,<span class="st">&#39;statistics&#39;</span>,<span class="st">&#39;rules!!&#39;</span>)
+v4</code></pre></div>
+<pre><code>## [1] &quot;spatial&quot;    &quot;statistics&quot; &quot;rules!!&quot;</code></pre>
+<p>Another option that only works for vectors contaning integer values is the use of <code>:</code> which produces a ordered sequence of numbers by adding 1 starting from the first value and finishing in the last.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v2 &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
+v2</code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v3 &lt;-<span class="st"> </span>-<span class="dv">5</span>:<span class="dv">3</span>
+v3</code></pre></div>
+<pre><code>## [1] -5 -4 -3 -2 -1  0  1  2  3</code></pre>
+<p>Vectors, lists, arrays, and dataframes are indexed objects. This means that they store several values and assign to each of them a numerical index that indicates their position within the object. We can access the information stored in each of the positions by using <code>name[position]</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v1[<span class="dv">1</span>]</code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="note">
+<p>
+Note that opposite to most of the other programming languages, the index for the first position in an indexed object is 1, whereas Python, C++ and others use 0.
+</p>
+</div>
+<p>As with an unindexed object, it is possible to modify the information of a particular position using the combination <code>name[position]</code> and the assignment operator <code>&lt;-</code>. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v3[<span class="dv">9</span>] &lt;-<span class="st"> </span><span class="dv">10000</span>
+v3[<span class="dv">9</span>]</code></pre></div>
+<pre><code>## [1] 10000</code></pre>
+<p>Let’s see some specific functions and basic operations for vectors and other indexed objects:</p>
+<ul>
+<li><code>length(vector)</code>: Returns the number of positions of a vector.</li>
+<li>Logical operators <code>&lt;,&gt;, ==,!=</code>: Applying these operators on a vector returns a new vector with values TRUE/FALSE for each of the positions of the vector, depending on whether the given values satisfies or not the condition.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(v3)</code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">v4&lt;-<span class="dv">1</span>:<span class="dv">5</span>
+v4&gt;<span class="dv">3</span></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE  TRUE  TRUE</code></pre>
+</div>
+<div id="lists" class="section level3">
+<h3><span class="header-section-number">1.4.3</span> Lists</h3>
+<p>Once we have seen vectors we go to explore how objects of type list work. A list is an object similar to a vector with the difference that lists allow to store values of different type. Lists are created using the <code>list(value1, value2, ...)</code> function. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">list1 &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>,<span class="dv">7</span>,<span class="st">&#39;Marcos&#39;</span>)
+list1</code></pre></div>
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 7
+## 
+## [[3]]
+## [1] &quot;Marcos&quot;</code></pre>
+<p>To access the values stored in the different positions proceed in the same way we did with vectors, ie <code>name[position]</code>:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">list1[<span class="dv">3</span>]</code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;Marcos&quot;</code></pre>
+<p>We can use the <code>length()</code> function with list too:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(list1)</code></pre></div>
+<pre><code>## [1] 3</code></pre>
+</div>
+<div id="arrays" class="section level3">
+<h3><span class="header-section-number">1.4.4</span> Arrays</h3>
+<p>Arrays are an extension of vectors, which add additional dimensions to store information. The most common case is the 2-dimensional matrix (rows and columns). To create an array, we use <code>array(values, dimensions)</code>. Both <code>values</code> and <code>dimensions</code> are specified using vectors. In the following example we see how to create a matrix with 4 rows and 5 columns, thus containing 20 values, in this case correlative numbers from 1 to 20:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myarray&lt;-<span class="st"> </span><span class="kw">array</span>(<span class="dv">1</span>:<span class="dv">20</span>,<span class="dt">dim=</span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>))
+myarray</code></pre></div>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    5    9   13   17
+## [2,]    2    6   10   14   18
+## [3,]    3    7   11   15   19
+## [4,]    4    8   12   16   20</code></pre>
+<p>To access the stored values we will use a combination of row-and-column positions like <code>matrix[row, col]</code>, where <code>row</code> indicates the row postition and <code>col</code> the column one. If we only assign value to one of the coordinates (<code>[row,]</code> or <code>[,col]</code>) we get the vector corresponding to the specified row or column.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myarray[<span class="dv">3</span>,<span class="dv">2</span>]</code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myarray[<span class="dv">3</span>,]</code></pre></div>
+<pre><code>## [1]  3  7 11 15 19</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myarray[,<span class="dv">2</span>]</code></pre></div>
+<pre><code>## [1] 5 6 7 8</code></pre>
+</div>
+<div id="data.frame" class="section level3">
+<h3><span class="header-section-number">1.4.5</span> Data.frame</h3>
+<p>A data frame is used for storing data tables. It is a list of vectors of equal length. For example, the following variable df is a data frame containing three vectors <code>n</code>, <code>s</code>, <code>b</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">n &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>) 
+s &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;aa&quot;</span>, <span class="st">&quot;bb&quot;</span>, <span class="st">&quot;cc&quot;</span>) 
+b &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>) 
+df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(n, s, b)</code></pre></div>
+<p>As you can see, the function <code>data.frame()</code> is used to create the data.frame. However, we will seldom use these function to create objects or store data. Normally, we will call an instruction to read text files containing data or call data objects available in some packages.</p>
+</div>
+</div>
+<div id="object-management" class="section level2">
+<h2><span class="header-section-number">1.5</span> Object management</h2>
+<p>We have seen so far aspects related to the creation of objects. However we should be also know how many objects we have created in our session and how to remove them if necessary. To display all created objects we use <code>ls()</code>. Deleting objects in R is done by the command <em>remove</em> <code>rm(object)</code> and then call to the <em>garbage collector</em> with <code>gc()</code> to free-up the occupied memory.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ls</span>()</code></pre></div>
+<pre><code>##  [1] &quot;b&quot;           &quot;col2&quot;        &quot;cols&quot;        &quot;cols2&quot;       &quot;cols3&quot;      
+##  [6] &quot;col.Y_INDEX&quot; &quot;data&quot;        &quot;desv&quot;        &quot;df&quot;          &quot;fires&quot;      
+## [11] &quot;list1&quot;       &quot;myarray&quot;     &quot;n&quot;           &quot;name&quot;        &quot;ndvi&quot;       
+## [16] &quot;regression&quot;  &quot;row1&quot;        &quot;row2&quot;        &quot;row3&quot;        &quot;s&quot;          
+## [21] &quot;table&quot;       &quot;v1&quot;          &quot;v2&quot;          &quot;v3&quot;          &quot;v4&quot;         
+## [26] &quot;x&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(n)
+<span class="kw">gc</span>()</code></pre></div>
+<pre><code>##           used (Mb) gc trigger  (Mb) max used  (Mb)
+## Ncells 1249546 66.8    2164898 115.7  2164898 115.7
+## Vcells 2482625 19.0    5372895  41.0  5372893  41.0</code></pre>
+<p>If we want to removal <strong>al</strong> the objects we have currently in our working session we can pass a <code>list</code> object containing the names of all objects to the <code>gc()</code> function. If you are thinking on combining <code>gc()</code>and <code>ls()</code>you are right. This would be the way:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())
+<span class="kw">gc</span>()</code></pre></div>
+<pre><code>##           used (Mb) gc trigger  (Mb) max used  (Mb)
+## Ncells 1249167 66.8    2164898 115.7  2164898 115.7
+## Vcells 2480615 19.0    5372895  41.0  5372893  41.0</code></pre>
+</div>
+<div id="functions-and-arguments" class="section level2">
+<h2><span class="header-section-number">1.6</span> Functions and arguments</h2>
+<p>Up to this point we have seen and executed some instructions in R, generally oriented to the creation of objects or realization of simple arithmetic operations.</p>
+<p>However, we have also executed some function-type statements, such as the <code>length()</code> function. A function can be defined as a group of instructions that takes an input, uses this input to compute other values and returns a result or product. We will not go into very deep details, at least for now. It suffices to know that to execute a function it is enough to invoke the instruction that calls the desired function (<code>length</code>) and to specify the necessary inputs, also knwon as <em>arguments</em>. These inputs are always included between the parentheses of the instruction (<code>length(vector)</code>). If several arguments are needed we separate them usign <code>,</code>.</p>
+<div class="note">
+<p>
+Sometimes we can refer to a given argument by using the argument’s name as is the case of the example we saw to delete all the objects in a session <code>rm(list=ls())</code>.
+</p>
+</div>
+</div>
+<div id="scripts-in-r" class="section level2">
+<h2><span class="header-section-number">1.7</span> Scripts in R</h2>
+<p>So far we have inserted instructions in the console but this is not the most efficient way to work. We will focus on the use of scripts which are an <strong>orderder set of instructions</strong>. This means we can write a text file with the instructions we want to insert and then run them at once.</p>
+<p>RStudio has an script development environment which opens in the top-left window. We can access the scripting window pressing <em>File/New File/R script</em>.</p>
+<p>For additional information visit the <a href="https://support.rstudio.com/hc/en-us/articles/200484448-Editing-and-Executing-Code">RStudio support site</a>.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-base">
+<p>R Core Team. 2016. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="uri">https://www.R-project.org/</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>This is probably the most useful one. The IDE will suggest the function name instead of fully typing it<a href="intro.html#fnref1">↩</a></p></li>
+<li id="fn2"><p>Just for the record, this is my favourite one<a href="intro.html#fnref2">↩</a></p></li>
+<li id="fn3"><p>Do not mistake it with the R vector object, they are quite different!!<a href="intro.html#fnref3">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="working-with-files.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
+"text": "Edit"
+},
+"download": ["bookdown-demo.pdf", "bookdown-demo.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
